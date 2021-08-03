@@ -14,7 +14,11 @@ the macOS keychain.
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/jorgelbg/pinentry-touchid/releases/download/v0.0.2/pinentry-touchid_0.0.2_macos_amd64.tar.gz"
-      sha256 "573eb708fb9a69d0eea526c50b2703d4bcd42c94d6ecf57bf3661a6947d77123"
+      sha256 "fb2a62c7b7a266520be33f52610bd53d038a7abbc8e4c1c4780b7895759877ee"
+    end
+    if Hardware::CPU.arm?
+      url "https://github.com/jorgelbg/pinentry-touchid/releases/download/v0.0.2/pinentry-touchid_0.0.2_macos_arm64.tar.gz"
+      sha256 "6929c015e8a8b2ebfe60e28d72ff9608f6d1711029f6e710c4f9397743db93da"
     end
   end
 
@@ -26,11 +30,18 @@ the macOS keychain.
   end
 
   def caveats; <<~EOS
-    ✅ Add the following line to your ~/.gnupg/gpg-agent.conf file:
+    ✅  Add the following line to your ~/.gnupg/gpg-agent.conf file:
           pinentry-program #{bin}/pinentry-touchid
 
-    ✅ Then reload your gpg-agent:
+    🔄  Then reload your gpg-agent:
           gpg-connect-agent reloadagent /bye
+
+    🔑  Run the following command to disable "Save in Keychain" in pinentry-mac:
+          defaults write org.gpgtools.common DisableKeychain -bool yes
+
+    ⛔️  If you are upgrading from a previous version, you will be asked to give
+        access again to the keychain entry. Click "Always Allow" after the
+        Touch ID verification to prevent this dialog from showing.
   EOS
   end
 
