@@ -14,11 +14,11 @@ the macOS keychain.
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/jorgelbg/pinentry-touchid/releases/download/v0.0.2/pinentry-touchid_0.0.2_macos_amd64.tar.gz"
-      sha256 "fb2a62c7b7a266520be33f52610bd53d038a7abbc8e4c1c4780b7895759877ee"
+      sha256 "60e839947b76b37c68c8b0385009eaf2a60325372d5e699c528e2c3d348444e4"
     end
     if Hardware::CPU.arm?
       url "https://github.com/jorgelbg/pinentry-touchid/releases/download/v0.0.2/pinentry-touchid_0.0.2_macos_arm64.tar.gz"
-      sha256 "6929c015e8a8b2ebfe60e28d72ff9608f6d1711029f6e710c4f9397743db93da"
+      sha256 "6f8cca4896ccb1ef4d27fc1c829850e37b435b8bb6edec9842c8defaf8ea1669"
     end
   end
 
