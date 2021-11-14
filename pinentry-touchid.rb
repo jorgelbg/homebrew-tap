@@ -8,7 +8,6 @@ the macOS keychain.
 "
   homepage "https://github.com/jorgelbg/pinentry-touchid"
   version "0.0.2"
-  bottle :unneeded
   depends_on :macos
 
   on_macos do
