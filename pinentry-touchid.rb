@@ -7,7 +7,7 @@ class PinentryTouchid < Formula
 the macOS keychain.
 "
   homepage "https://github.com/jorgelbg/pinentry-touchid"
-  version "0.0.2"
+  version "0.0.3"
   depends_on :macos
 
   on_macos do
