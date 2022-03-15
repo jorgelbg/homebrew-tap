@@ -7,17 +7,17 @@ class PinentryTouchid < Formula
 the macOS keychain.
 "
   homepage "https://github.com/jorgelbg/pinentry-touchid"
-  version "0.0.2"
+  version "0.0.3"
   depends_on :macos
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/jorgelbg/pinentry-touchid/releases/download/v0.0.2/pinentry-touchid_0.0.2_macos_amd64.tar.gz"
-      sha256 "60e839947b76b37c68c8b0385009eaf2a60325372d5e699c528e2c3d348444e4"
+      url "https://github.com/jorgelbg/pinentry-touchid/releases/download/v0.0.3-rc1/pinentry-touchid_0.0.3-rc1_macos_amd64.tar.gz"
+      sha256 "fced231d26fb56ce969bb95331ab1d51f6d80db450099c9604b6b84a9d8cf55b"
     end
     if Hardware::CPU.arm?
-      url "https://github.com/jorgelbg/pinentry-touchid/releases/download/v0.0.2/pinentry-touchid_0.0.2_macos_arm64.tar.gz"
-      sha256 "6f8cca4896ccb1ef4d27fc1c829850e37b435b8bb6edec9842c8defaf8ea1669"
+      url "https://github.com/jorgelbg/pinentry-touchid/releases/download/v0.0.3-rc1/pinentry-touchid_0.0.3-rc1_macos_arm64.tar.gz"
+      sha256 "b086f86f431419971f2a3a52144a855531dcf89bda3b06f0c29464ecb0332e14"
     end
   end
 
