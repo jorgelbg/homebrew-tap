@@ -7,28 +7,35 @@ class PinentryTouchid < Formula
 the macOS keychain.
 "
   homepage "https://github.com/jorgelbg/pinentry-touchid"
-  version "0.0.2"
+  version "0.0.3"
   depends_on :macos
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/jorgelbg/pinentry-touchid/releases/download/v0.0.2/pinentry-touchid_0.0.2_macos_amd64.tar.gz"
-      sha256 "60e839947b76b37c68c8b0385009eaf2a60325372d5e699c528e2c3d348444e4"
-    end
     if Hardware::CPU.arm?
-      url "https://github.com/jorgelbg/pinentry-touchid/releases/download/v0.0.2/pinentry-touchid_0.0.2_macos_arm64.tar.gz"
-      sha256 "6f8cca4896ccb1ef4d27fc1c829850e37b435b8bb6edec9842c8defaf8ea1669"
+      url "https://github.com/jorgelbg/pinentry-touchid/releases/download/v0.0.3/pinentry-touchid_0.0.3_macos_arm64.tar.gz"
+      sha256 "6f1c24a02e836ce45eeae402785328a989e0aba64ab23ae3ed251d8269bd7772"
+
+      def install
+        bin.install "pinentry-touchid"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/jorgelbg/pinentry-touchid/releases/download/v0.0.3/pinentry-touchid_0.0.3_macos_amd64.tar.gz"
+      sha256 "e96c5fe6c1db250fcd2301451e59ed831c4c4701ee11a5dddb6619607b484708"
+
+      def install
+        bin.install "pinentry-touchid"
+      end
     end
   end
 
   depends_on "pinentry-mac"
   depends_on "pinentry"
 
-  def install
-    bin.install "pinentry-touchid"
-  end
-
   def caveats; <<~EOS
+    ➡️  Ensure that pinentry-mac is the default pinentry program:
+          #{bin}/pinentry-touchid -fix
+
     ✅  Add the following line to your ~/.gnupg/gpg-agent.conf file:
           pinentry-program #{bin}/pinentry-touchid
 
@@ -42,9 +49,5 @@ the macOS keychain.
         access again to the keychain entry. Click "Always Allow" after the
         Touch ID verification to prevent this dialog from showing.
   EOS
-  end
-
-  test do
-    system "#{bin}/pinentry-touchid -check"
   end
 end
